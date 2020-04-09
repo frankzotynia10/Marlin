@@ -26,10 +26,8 @@
 //
 // EEPROM
 //
-#if NONE(FLASH_EEPROM_EMULATION, SDCARD_EEPROM_EMULATION)
-  #define FLASH_EEPROM_EMULATION
-  //#define SDCARD_EEPROM_EMULATION
-#endif
+#define FLASH_EEPROM_EMULATION
+//#define SDCARD_EEPROM_EMULATION
 
 /**
  * Trinamic Stallguard pins
@@ -92,7 +90,7 @@
 // Z Probe (when not Z_MIN_PIN)
 //
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN                  P1_24
+  #define Z_MIN_PROBE_PIN                  P0_10
 #endif
 
 //
