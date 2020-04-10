@@ -159,6 +159,7 @@ Debug/
 __vm/
 .vs/
 vc-fileutils.settings
+*code-workplace
 
 #Visual Studio Code
 .vscode
