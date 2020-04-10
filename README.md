@@ -10,7 +10,7 @@
 Additional documentation can be found at the [Marlin Home Page](http://marlinfw.org/).
 Please test this firmware and let us know if it misbehaves in any way. Volunteers are standing by!
 
-## My Fork for a Custom Creality Ender 5
+## My Fork for a Custom Creality Ender 5  ** WORK IN PROGRESS **
 - Bigtree Tech SKR 1.4 Turbo Mainboard (LPC1769)
 - TMC2209 Drivers
 - E3D Hemera Extruder
@@ -26,6 +26,9 @@ Please test this firmware and let us know if it misbehaves in any way. Volunteer
 - Bilinear Bed Leveling
 - Safe Homing
 - Linear Advance (Linear Pressure Control)
+
+## Contact me for help with firmware questions
+[twitter](https://twitter.com/depreciated_)
 
 ## Building Marlin 2.0
 
