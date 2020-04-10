@@ -1530,7 +1530,7 @@
   //#define PROBE_PT_1_Y 180
   //#define PROBE_PT_2_X 15
   //#define PROBE_PT_2_Y 20
-  //#define PROBE_PT_3_X 170
+  //#define PROBE_PT_3_X 17
   //#define PROBE_PT_3_Y 20
 #endif
 
@@ -2325,9 +2325,9 @@
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
-    #define X_STALL_SENSITIVITY  65
+    #define X_STALL_SENSITIVITY  82
     #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
-    #define Y_STALL_SENSITIVITY  67
+    #define Y_STALL_SENSITIVITY  85
     //#define Z_STALL_SENSITIVITY  8
     //#define SPI_ENDSTOPS              // TMC2130 only
     #define IMPROVE_HOMING_RELIABILITY
