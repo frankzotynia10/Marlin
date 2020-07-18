@@ -169,9 +169,7 @@ void GcodeSuite::G76() {
       report_temps(next_temp_report);
 
     // Disable leveling so it won't mess with us
-    #if HAS_LEVELING
-      set_bed_leveling_enabled(false);
-    #endif
+    TERN_(HAS_LEVELING, set_bed_leveling_enabled(false));
 
     for (;;) {
       thermalManager.setTargetBed(target_bed);
@@ -213,9 +211,7 @@ void GcodeSuite::G76() {
 
     // Cleanup
     thermalManager.setTargetBed(0);
-    #if HAS_LEVELING
-      set_bed_leveling_enabled(true);
-    #endif
+    TERN_(HAS_LEVELING, set_bed_leveling_enabled(true));
   } // do_bed_cal
 
   /********************************************
@@ -237,9 +233,7 @@ void GcodeSuite::G76() {
     wait_for_temps(target_bed, target_probe, next_temp_report);
 
     // Disable leveling so it won't mess with us
-    #if HAS_LEVELING
-      set_bed_leveling_enabled(false);
-    #endif
+    TERN_(HAS_LEVELING, set_bed_leveling_enabled(false));
 
     bool timeout = false;
     for (;;) {
@@ -278,9 +272,7 @@ void GcodeSuite::G76() {
 
     // Cleanup
     thermalManager.setTargetBed(0);
-    #if HAS_LEVELING
-      set_bed_leveling_enabled(true);
-    #endif
+    TERN_(HAS_LEVELING, set_bed_leveling_enabled(true));
 
     SERIAL_ECHOLNPGM("Final compensation values:");
     temp_comp.print_offsets();
