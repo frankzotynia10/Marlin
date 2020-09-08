@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 #pragma once
@@ -84,9 +84,7 @@ class ProbeTempComp {
     static inline void clear_all_offsets() {
       clear_offsets(TSI_BED);
       clear_offsets(TSI_PROBE);
-      #if ENABLED(USE_TEMP_EXT_COMPENSATION)
-        clear_offsets(TSI_EXT);
-      #endif
+      TERN_(USE_TEMP_EXT_COMPENSATION, clear_offsets(TSI_EXT));
     }
     static bool set_offset(const TempSensorID tsi, const uint8_t idx, const int16_t offset);
     static void print_offsets();

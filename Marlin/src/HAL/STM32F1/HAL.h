@@ -17,7 +17,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 #pragma once
@@ -36,7 +36,6 @@
 #include "fastio.h"
 #include "watchdog.h"
 
-#include "timers.h"
 
 #include <stdint.h>
 #include <util/atomic.h>
@@ -47,12 +46,14 @@
   #include "msc_sd.h"
 #endif
 
+#include "MarlinSerial.h"
+
 // ------------------------
 // Defines
 // ------------------------
 
 #ifndef STM32_FLASH_SIZE
-  #ifdef MCU_STM32F103RE
+  #if defined(MCU_STM32F103RE) || defined(MCU_STM32F103VE)
     #define STM32_FLASH_SIZE 512
   #else
     #define STM32_FLASH_SIZE 256
@@ -65,17 +66,6 @@
   #else
     #define UsbSerial MarlinCompositeSerial
   #endif
-  #define MSerial1  Serial1
-  #define MSerial2  Serial2
-  #define MSerial3  Serial3
-  #define MSerial4  Serial4
-  #define MSerial5  Serial5
-#else
-  #define MSerial1  Serial
-  #define MSerial2  Serial1
-  #define MSerial3  Serial2
-  #define MSerial4  Serial3
-  #define MSerial5  Serial4
 #endif
 
 #if SERIAL_PORT == 0
@@ -249,19 +239,6 @@ static int freeMemory() {
 #pragma GCC diagnostic pop
 
 //
-// EEPROM
-//
-
-/**
- * TODO: Write all this EEPROM stuff. Can emulate EEPROM in flash as last resort.
- * Wire library should work for i2c EEPROMs.
- */
-void eeprom_write_byte(uint8_t *pos, unsigned char value);
-uint8_t eeprom_read_byte(uint8_t *pos);
-void eeprom_read_block(void *__dst, const void *__src, size_t __n);
-void eeprom_update_block(const void *__src, void *__dst, size_t __n);
-
-//
 // ADC
 //
 
@@ -269,8 +246,9 @@ void eeprom_update_block(const void *__src, void *__dst, size_t __n);
 
 void HAL_adc_init();
 
-#define HAL_START_ADC(pin)  HAL_adc_start_conversion(pin)
+#define HAL_ADC_VREF         3.3
 #define HAL_ADC_RESOLUTION  10
+#define HAL_START_ADC(pin)  HAL_adc_start_conversion(pin)
 #define HAL_READ_ADC()      HAL_adc_result
 #define HAL_ADC_READY()     true
 

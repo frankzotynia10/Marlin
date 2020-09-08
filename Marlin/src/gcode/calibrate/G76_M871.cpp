@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 
@@ -45,7 +45,7 @@
  *  - When calibrating bed, probe temperature is held constant.
  *    Compensation values are deltas to first probe measurement at bed temp. = 60°C.
  *  - The hotend will not be heated at any time.
- *  - On my Prusa MK3S clone I put a piece of paper between the probe and the hotend
+ *  - On my Průša MK3S clone I put a piece of paper between the probe and the hotend
  *    so the hotend fan would not cool my probe constantly. Alternativly you could just
  *    make sure the fan is not running while running the calibration process.
  *
@@ -169,9 +169,7 @@ void GcodeSuite::G76() {
       report_temps(next_temp_report);
 
     // Disable leveling so it won't mess with us
-    #if HAS_LEVELING
-      set_bed_leveling_enabled(false);
-    #endif
+    TERN_(HAS_LEVELING, set_bed_leveling_enabled(false));
 
     for (;;) {
       thermalManager.setTargetBed(target_bed);
@@ -213,9 +211,7 @@ void GcodeSuite::G76() {
 
     // Cleanup
     thermalManager.setTargetBed(0);
-    #if HAS_LEVELING
-      set_bed_leveling_enabled(true);
-    #endif
+    TERN_(HAS_LEVELING, set_bed_leveling_enabled(true));
   } // do_bed_cal
 
   /********************************************
@@ -237,9 +233,7 @@ void GcodeSuite::G76() {
     wait_for_temps(target_bed, target_probe, next_temp_report);
 
     // Disable leveling so it won't mess with us
-    #if HAS_LEVELING
-      set_bed_leveling_enabled(false);
-    #endif
+    TERN_(HAS_LEVELING, set_bed_leveling_enabled(false));
 
     bool timeout = false;
     for (;;) {
@@ -278,9 +272,7 @@ void GcodeSuite::G76() {
 
     // Cleanup
     thermalManager.setTargetBed(0);
-    #if HAS_LEVELING
-      set_bed_leveling_enabled(true);
-    #endif
+    TERN_(HAS_LEVELING, set_bed_leveling_enabled(true));
 
     SERIAL_ECHOLNPGM("Final compensation values:");
     temp_comp.print_offsets();
