@@ -482,16 +482,11 @@
 #define PID_K1 0.95      // Smoothing factor within any PID loop
 
 #if ENABLED(PIDTEMP)
-<<<<<<< HEAD
   #define PID_EDIT_MENU           // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
   #define PID_AUTOTUNE_MENU       // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
   //#define PID_DEBUG             // Sends debug data to the serial port. Use 'M303 D' to toggle activation.
   //#define PID_OPENLOOP 1        // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
   //#define SLOW_PWM_HEATERS      // PWM with very low frequency (roughly 0.125Hz=8s) and minimum state time of approximately 1s useful for heaters driven by a relay
-=======
-  //#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
-  //#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
->>>>>>> upstream/bugfix-2.0.x
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
 
@@ -832,13 +827,7 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-<<<<<<< HEAD
-  #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge
-=======
-  #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge
-  #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
-                                      // for small segments (< 1mm) with large junction angles (> 135°).
->>>>>>> upstream/bugfix-2.0.x
+  #define JUNCTION_DEVIATION_MM 0.013  // (mm) Distance from real junction edge
 #endif
 
 /**
@@ -1015,11 +1004,7 @@
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-<<<<<<< HEAD
-#define MIN_PROBE_EDGE 15
-=======
-#define PROBING_MARGIN 10
->>>>>>> upstream/bugfix-2.0.x
+#define MIN_PROBE_EDGE 10
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_SPEED (133*60)
@@ -1109,13 +1094,8 @@
 
 // @section extruder
 
-<<<<<<< HEAD
 #define DISABLE_E false             // For all extruders
 //#define DISABLE_INACTIVE_EXTRUDER // Keep only the active extruder enabled
-=======
-#define DISABLE_E false             // Disable the extruder when not stepping
-#define DISABLE_INACTIVE_EXTRUDER   // Keep only the active extruder enabled
->>>>>>> upstream/bugfix-2.0.x
 
 // @section machine
 
@@ -1422,13 +1402,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-<<<<<<< HEAD
-  #define Z_SAFE_HOMING_X_POINT 115   // X point for Z homing when homing all axes (G28).
-  #define Z_SAFE_HOMING_Y_POINT 115    // Y point for Z homing when homing all axes (G28).
-=======
-  #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing
->>>>>>> upstream/bugfix-2.0.x
+  #define Z_SAFE_HOMING_X_POINT X_CENTER   // X point for Z homing when homing all axes (G28).
+  #define Z_SAFE_HOMING_Y_POINT Y_CENTER    // Y point for Z homing when homing all axes (G28).
 #endif
 
 // Homing speeds (mm/min)
@@ -2388,23 +2363,14 @@
   //#define RGB_LED_W_PIN -1
 #endif
 
-<<<<<<< HEAD
 // Support for Adafruit Neopixel LED driver
 #define NEOPIXEL_LED
-=======
-// Support for Adafruit NeoPixel LED driver
-//#define NEOPIXEL_LED
->>>>>>> upstream/bugfix-2.0.x
 #if ENABLED(NEOPIXEL_LED)
   #define NEOPIXEL_TYPE   NEO_GRBW // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
   #define NEOPIXEL_PIN     P1_24       // LED driving pin
   //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN    5
-<<<<<<< HEAD
   #define NEOPIXEL_PIXELS 10       // Number of LEDs in the strip, larger of 2 strips if 2 neopixel strips are used
-=======
-  #define NEOPIXEL_PIXELS 30       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
->>>>>>> upstream/bugfix-2.0.x
   #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
   #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
   #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
