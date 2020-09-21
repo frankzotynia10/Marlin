@@ -492,9 +492,9 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
   // Creality Ender-5 (Hemera) - FZ 4/7/2020
-  #define DEFAULT_Kp 27.14
-  #define DEFAULT_Ki 2.65
-  #define DEFAULT_Kd 69.40
+  #define DEFAULT_Kp 30.72
+  #define DEFAULT_Ki 3.10
+  #define DEFAULT_Kd 76.18
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
